@@ -1,5 +1,4 @@
 import traceback
-f = 0
 
 class asm:
     op = {
