@@ -187,7 +187,7 @@ class asm:
             print(x)
 
     def fg(self):
-        if "hlt" in self.code[0:1:len(self.code) - 2]:
+        if "hlt" in self.code[0:1:len(self.code) - 1]:
             if len(self.code[len(self.code) - 1]) > 0:
                 print('General Syntax Error')
                 return 0
