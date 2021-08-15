@@ -1,5 +1,6 @@
 import traceback
 
+
 class asm:
     op = {
         'add' : '00000',
@@ -186,8 +187,8 @@ class asm:
             print(x)
 
     def fg(self):
-        if "hlt" in self.code[len(self.code) - 2]: #second last hlt
-            if len(self.code[len(self.code) - 1]) > 0: #last line anything
+        if "hlt" in self.code[0:1:len(self.code) - 2]:
+            if len(self.code[len(self.code) - 1]) > 0:
                 print('General Syntax Error')
                 return 0
 
@@ -197,15 +198,24 @@ class asm:
 def main():
     a = asm()
     a.input()
+    f = 1
 
     if(a.fg()):
         try:
             a.conv_pass1()
-            a.conv_pass2()
         except:
             # traceback.print_exception()
-            print('General Syntax Error')
+            f == 0
+            print('Illegal Use of variable name')
             exit()
+        
+        if(f == 1):
+            try:
+                a.conv_pass2()
+            except:
+                # traceback.print_exception()
+                print('General Syntax Error')
+                exit()
 
         a.print_sol()
 
